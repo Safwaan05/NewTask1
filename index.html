@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Petrol On-Demand 🚴⛽</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .app {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      text-align: center;
+    }
+    h1 { margin-bottom: 10px; }
+    input, select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background: #00c853;
+      color: white;
+      cursor: pointer;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>⛽ Petrol On-Demand</h1>
+    <p>Stuck on the road? Order petrol instantly!</p>
+
+    <input id="location" placeholder="Enter your location">
+    <select id="litres">
+      <option value="1">1 Litre</option>
+      <option value="2">2 Litres</option>
+      <option value="5">5 Litres</option>
+    </select>
+    <button onclick="placeOrder()">Order Petrol</button>
+
+    <div id="status"></div>
+  </div>
+
+  <script>
+    function placeOrder() {
+      let location = document.getElementById("location").value;
+      let litres = document.getElementById("litres").value;
+
+      if(location.trim() === "") {
+        alert("Please enter your location!");
+        return;
+      }
+
+      let orderId = Math.floor(Math.random()*10000);
+      document.getElementById("status").innerHTML = `
+        <div class="card">
+          <h3>✅ Order Confirmed</h3>
+          <p>Order ID: #${orderId}</p>
+          <p>Location: ${location}</p>
+          <p>Quantity: ${litres} Litres</p>
+          <p>⏳ A delivery partner is on the way!</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
